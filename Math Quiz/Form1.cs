@@ -86,9 +86,18 @@ namespace Math_Quiz
             quotient.Value = 0;
 
             // Start the timer.
-            timeLeft = 30;
-            timeLabel.Text = "30 seconds";
-            timer1.Start();
+            if (beginnerCheck.Checked == true)
+            {
+                timeLeft = 90;
+                timeLabel.Text = "90 seconds";
+                timer1.Start();
+            }
+            else
+            {
+                timeLeft = 30;
+                timeLabel.Text = "30 seconds";
+                timer1.Start();
+            }
         }
 
         /// <summary>
@@ -97,13 +106,30 @@ namespace Math_Quiz
         /// <returns>True if the answer's correct, false otherwise.</returns>
         private bool CheckTheAnswer()
         {
+            if (addend1 + addend2 == sum.Value)
+            {
+                sum.BackColor = Color.GreenYellow;
+            }
+            if (minuend - subtrahend == difference.Value)
+            {
+                difference.BackColor = Color.GreenYellow;
+            }
+            if (multiplicand * multiplier == product.Value)
+            {
+                product.BackColor = Color.GreenYellow;
+            }
+            if (dividend / divisor == quotient.Value)
+            {
+                quotient.BackColor = Color.GreenYellow;
+            }
+
             if ((addend1 + addend2 == sum.Value)
                 && (minuend - subtrahend == difference.Value)
                 && (multiplicand * multiplier == product.Value)
                 && (dividend / divisor == quotient.Value))
                 return true;
             else
-                return false;
+                return false;            
         }
 
         private void startButton_Click(object sender, EventArgs e)
